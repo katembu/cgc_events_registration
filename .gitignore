@@ -1,0 +1,31 @@
+__version__.py
+*.pyc
+.py~
+*.swp
+*~
+local.ini
+core.*
+.project
+.pydevproject
+*.sqlite3
+logs/*
+\#*
+.#*
+*~
+\#*
+*.log*
+
+# Static reports
+apps/childcount/static/reports/*
+
+# Documentation build
+docs/build/*
+
+#mac stuff
+.DS_Store
+._*
+# eclipse stuff
+.settings
+#netbeans
+nbproject
+
