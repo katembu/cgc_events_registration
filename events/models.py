@@ -30,6 +30,8 @@ class Events(models.Model):
     status = models.CharField(_(u"status"), max_length=32,
                               choices=STATUS_CHOICES,
                               default=STATUS_INACTIVE)
+    response_text = models.TextField(_(u"Response Text"), blank=True,
+                                null=True)
     event_code = models.CharField(_(u"Event Code"), max_length=6, blank=True,
                                 null=True, db_index=True, unique=True,
                                 help_text=_(u"Event Code"))

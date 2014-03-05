@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'events',
+    'south',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -59,7 +60,7 @@ WSGI_APPLICATION = 'myevent.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'events.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'myevents.sqlite3'),
     }
 }
 

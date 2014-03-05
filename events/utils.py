@@ -13,10 +13,10 @@ def process_sms(text, mobileno):
     tokens = re.split(r'\s+', text)
 
     if extra_token & (len(tokens) <= 2):
-        return "Invalid Format: Reply with FIRSTNAME LASTNAME EVENTCODE"
+        return u"Invalid Format: Reply with FIRSTNAME LASTNAME EVENTCODE"
 
     if (not extra_token) & (len(tokens) < 2):
-        return "Invalid Format: Reply with FIRSTNAME LASTNAME"
+        return u"Invalid Format: Reply with FIRSTNAME LASTNAME"
 
     if extra_token:
         #check if event ID exist
@@ -27,7 +27,7 @@ def process_sms(text, mobileno):
             event = Events.objects.filter(status=Events.STATUS_ACTIVE,
                                             event_code__iexact=event_id)[0]
         except:
-            return "Invalid Events Code. Reply with correct event Code"
+            return u"Invalid Events Code. Reply with correct event Code"
 
     else:
         event = Events.objects.filter(status=Events.STATUS_ACTIVE)[0]
@@ -43,8 +43,6 @@ def process_sms(text, mobileno):
     p.event = event
     p.save()
 
-    return "Thank you for registering; see you %s at %s."\
-           "Please bring photo ID." % (event.start_date.strftime("%d/%m"),
-                                    event.start_date.strftime("%H"))
+    return u"%s" % (event.response_text)
 
 
