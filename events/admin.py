@@ -18,7 +18,7 @@ admin.site.register(LoggedMessage, LoggedMessageAdmin)
 
 
 class EventsAdmin(admin.ModelAdmin):
-    list_display = ('__unicode__', 'start_date', 'end_date','capacity', 'status')
+    list_display = ('__unicode__', 'event_code', 'start_date', 'end_date','capacity', 'status')
     list_filter = ['status']
     search_fields = ['event_name', 'status']
 admin.site.register(Events, EventsAdmin)

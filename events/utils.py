@@ -24,7 +24,8 @@ def process_sms(text, mobileno):
         tokens.pop(-1)
         #return(event_id)
         try:
-            event = Events.objects.filter(status=Events.STATUS_ACTIVE, pk=event_id)[0]
+            event = Events.objects.filter(status=Events.STATUS_ACTIVE,
+                                            event_code__iexact=event_id)[0]
         except:
             return "Invalid Events Code. Reply with correct event Code"
 
@@ -42,6 +43,8 @@ def process_sms(text, mobileno):
     p.event = event
     p.save()
 
-    return "Thank you %s %s. You've Been registered for %s to "\
-           "be held on %s " % (first_name, last_name, event.event_name,
-                               event.start_date.strftime("%d-%m-%Y %H:%M"))
+    return "Thank you for registering; see you %s at %s."\
+           "Please bring photo ID." % (event.start_date.strftime("%d/%m"),
+                                    event.start_date.strftime("%H"))
+
+

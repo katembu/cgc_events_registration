@@ -30,6 +30,9 @@ class Events(models.Model):
     status = models.CharField(_(u"status"), max_length=32,
                               choices=STATUS_CHOICES,
                               default=STATUS_INACTIVE)
+    event_code = models.CharField(_(u"Event Code"), max_length=6, blank=True,
+                                null=True, db_index=True, unique=True,
+                                help_text=_(u"Event Code"))
     created_on = models.DateTimeField(_(u"Created on"), auto_now_add=True,
                                       help_text=_(u"When the record " \
                                                    "was created"),
@@ -37,6 +40,7 @@ class Events(models.Model):
 
     def __unicode__(self):
         return  u"%s " % self.event_name
+
 
 class Participants(models.Model):
     class Meta:
