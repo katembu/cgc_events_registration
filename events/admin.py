@@ -24,7 +24,7 @@ class EventsAdmin(admin.ModelAdmin):
 admin.site.register(Events, EventsAdmin)
 
 class ParticipantsAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name','mobile', 'event')
-    list_filter = ['mobile']
+    list_display = ('first_name', 'last_name','event','mobile')
+    list_filter = ['event']
     search_fields = ['first_name', 'last_name','mobile']
 admin.site.register(Participants, ParticipantsAdmin)
